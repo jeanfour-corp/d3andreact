@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Patient Data</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/dc.css"/>
+</head>
+<body style="background-color:#f1f8f6;">
+
+<div class="container">
+<div class='row'>
+
+<script>
+function pieLabel(pizza) {
+if (pizza=='0') {return 'Low Risk Patients'} else {return 'High Risk Patients'};
+}
+function pieLabelHospital(hospital) {
+if (hospital=='0') {return 'OLVG East'} else {if (hospital=='2') {return 'BovenIJ Ziekenhuis'} else {return 'OLVG West'}};
+}
+</script>
+    <div id='Chart'>
+    </div>
+  <div id="test1"><center><h4>Hospitalization Costs</h4></center></div>
+</div>
+  <div id="test2"><center><h4>Patient Risk</h4></center></div>
+  <div id="test3"><center><h4>Hospital</h4></center></div>
+<script type="text/javascript" src="../js/d3.js"></script>
+<script type="text/javascript" src="../js/crossfilter.js"></script>
+<script type="text/javascript" src="../js/dc.js"></script>
+<script type="text/javascript">
+
+var chart3   = dc.pieChart("#test3"),
+    chart2  = dc.pieChart("#test2"),
+    chart1 = dc.barChart("#test1");
+
+// columns=['week', 'risk', 'hospital', 'cost']
+d3.csv("hospitaldata.csv", function(error, experiments) {
+
+  var ndx                 = crossfilter(experiments),
+      week        = ndx.dimension(function(d) {return +d.week+1;}),
+      weekGroup       = week.group().reduceSum(function (d) {
+        return d.cost;
+    });
+
+      risk        = ndx.dimension(function(d) {return +d.risk;}),
+      riskGroup       = risk.group();
+
+      hospital        = ndx.dimension(function(d) {return +d.hospital;}),
+      hospitalGroup       = hospital.group();
+
+chart1.ordinalColors(['#66cbde','#d4f3a2','#d4f3a2','#66cbde','#ff7f00','#ffff33','#a65628']);
+
+  chart1
+    .width(768)
+    .height(300)
+    .dimension(week)
+    .group(weekGroup)
+    .x(d3.scale.linear().domain([1,24]))
+    .elasticY(false)
+    .brushOn(true)
+    .yAxisLabel("Euros €")
+    .xAxisLabel('Weeks')
+    .controlsUseVisibility(true)
+    .on('pretransition')
+    .render();
+
+chart2.ordinalColors(['#66cbde','#d4f3a2','#d4f3a2','#66cbde','#ff7f00','#ffff33','#a65628']);
+  chart2
+    .width(390)
+    .height(210)
+    .radius(100)
+    .dimension(risk)
+    .group(riskGroup)
+    .innerRadius(0)
+    .controlsUseVisibility(true)
+    .renderLabel(true)
+    .legend(dc.legend().legendText(function(d) {
+    return pieLabel(d.name)}))
+    .on('pretransition', function(chart) {
+        chart.selectAll('text.pie-slice').text(function(d) {
+            return dc.utils.printSingleValue((d.endAngle - d.startAngle) / (2*Math.PI) * 100) + '%';
+        })
+    })
+    .render();
+
+chart3.ordinalColors(['#66cbde','#d4f3a2','#515d6b','#dcf5b4','#ff7f00','#ffff33','#a65628']);
+    chart3.legend.itemHeight=500;
+  chart3
+    .width(420)
+    .height(210)
+    .radius(100)
+    .dimension(hospital)
+    .group(hospitalGroup)
+    .innerRadius(0)
+    .controlsUseVisibility(true)
+    .renderLabel(true)
+    .legend(dc.legend().legendText(function(d) {
+    return pieLabelHospital(d.name)}))
+    .on('pretransition', function(chart) {
+        chart.selectAll('text.pie-slice').text(function(d) {
+            return dc.utils.printSingleValue((d.endAngle - d.startAngle) / (2*Math.PI) * 100) + '%';
+        })
+    })
+    .render();
+
+});
+</script>
+
+</div>
+</body>
+</html>

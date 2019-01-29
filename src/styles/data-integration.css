@@ -1,0 +1,34 @@
+#data-sources-tab {
+  margin-top: 3%;
+  margin-left: 3%;
+  display: inline-block;
+}
+
+#source-example {
+  margin-top: 5%;
+}
+
+#source-text {
+  vertical-align: middle;
+}
+
+#source-img {
+  width: 30%;
+  vertical-align: middle;
+}
+
+#data-source-parameters-table{
+  display: inline-block;
+}
+
+.data-sources-text {
+  width: 100%;
+}
+
+#data-sources-in-transaction-header{
+  margin-top: 4%;
+}
+
+#data-sources-in-testing-header{
+  margin-top: 10%;
+}

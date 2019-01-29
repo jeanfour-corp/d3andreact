@@ -1,0 +1,53 @@
+{
+	"providers": {
+		"awscloudformation": {
+			"AuthRoleName": "reactdcmaster-20190129003624-authRole",
+			"UnauthRoleArn": "arn:aws:iam::041057893447:role/reactdcmaster-20190129003624-unauthRole",
+			"AuthRoleArn": "arn:aws:iam::041057893447:role/reactdcmaster-20190129003624-authRole",
+			"Region": "eu-central-1",
+			"DeploymentBucketName": "reactdcmaster-20190129003624-deployment",
+			"UnauthRoleName": "reactdcmaster-20190129003624-unauthRole",
+			"StackName": "reactdcmaster-20190129003624",
+			"StackId": "arn:aws:cloudformation:eu-central-1:041057893447:stack/reactdcmaster-20190129003624/867a8700-2355-11e9-b6e0-026d43bbed96"
+		}
+	},
+	"hosting": {
+		"S3AndCloudFront": {
+			"service": "S3AndCloudFront",
+			"providerPlugin": "awscloudformation",
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/reactdcmaster-20190129003624-deployment/amplify-cfn-templates/hosting/template.json",
+				"logicalId": "hostingS3AndCloudFront"
+			},
+			"lastPushTimeStamp": "2019-01-29T00:02:52.661Z",
+			"output": {
+				"S3BucketSecureURL": "https://reactdcmaster-20190129003739--hostingbucket.s3.amazonaws.com",
+				"WebsiteURL": "http://reactdcmaster-20190129003739--hostingbucket.s3-website.eu-central-1.amazonaws.com",
+				"Region": "eu-central-1",
+				"HostingBucketName": "reactdcmaster-20190129003739--hostingbucket"
+			},
+			"lastPushDirHash": "bDbby4+MbBrpCfQfNuhLtlkCCpI="
+		}
+	},
+	"auth": {
+		"cognitocc201318": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/reactdcmaster-20190129003624-deployment/amplify-cfn-templates/auth/cognitocc201318-cloudformation-template.yml",
+				"logicalId": "authcognitocc201318"
+			},
+			"lastPushTimeStamp": "2019-01-29T00:02:52.662Z",
+			"output": {
+				"AppClientSecret": "sh6v8q52tm2h3gtb2559jk3sbnjap5tjmvq2493d0m2lncfiti",
+				"UserPoolId": "eu-central-1_LHj70Pzf2",
+				"AppClientIDWeb": "4dh6ujdno486p7c60838g9ovqd",
+				"AppClientID": "2q3llnkr25nuaa3fno2o7a8q46",
+				"IdentityPoolId": "eu-central-1:bcb851af-1d53-44c7-8133-8209a5742807",
+				"IdentityPoolName": "cognitocc201318_identitypool_cc201318",
+				"UserPoolName": "cognitocc201318_userpool_cc201318"
+			},
+			"lastPushDirHash": "jEq3u9sO5YAbXTWouG7Cru0afR8="
+		}
+	}
+}

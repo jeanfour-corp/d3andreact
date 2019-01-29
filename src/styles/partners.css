@@ -1,0 +1,71 @@
+#existing-partners-img {
+  width: 8%;
+  vertical-align: middle;
+}
+
+#partner-addition-img {
+  width: 10%;
+  vertical-align: middle;
+  margin-left: 1.5%;
+}
+
+h1 {
+  font-family: "Roboto";
+  font-size: 12px;
+  font-weight: 100;
+  color: #394D60;
+  width: 30%;
+  display: inline;
+}
+
+h2 {
+  font-family: "Roboto";
+  font-size: 12px;
+  font-weight: 100;
+  color: #394D60;
+  width: 30%;
+  display: inline;
+  margin-left: 1%;
+}
+
+#existing-partners-header {
+  vertical-align: top;
+  margin-left: 2%;
+  margin-top: 1%;
+}
+
+#add-a-new-one-header {
+  margin-top: 1%;
+}
+
+#existing-partners-logos-img {
+  width: 90px;
+}
+
+#contract-renewal-img {
+  width: 70%;
+}
+
+#contract-img {
+  width: 45%;
+}
+
+#existing-partners-table {
+  margin-left: 4%;
+  margin-top: 2%;
+  width: 30%;
+}
+
+.logo {
+  padding-right: 30px;
+  border-bottom: 1px solid #CACCCF;
+  height: 40px;
+}
+
+.renewal {
+  text-align: center;
+}
+
+.contract {
+text-align: center;
+}

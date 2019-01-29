@@ -1,0 +1,20 @@
+#outcome-measurement-img {
+ display: block;
+  width: 85%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 4%;
+}
+
+#patient-coverage-img {
+ display: block;
+  width: 85%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 4%;
+}
+
+#patient-subpopulations {
+  margin-left: 105%;
+  margin-top: -50%;
+}
